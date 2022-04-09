@@ -9,60 +9,6 @@ fetch(url)
   return response.json();
 })
 .then(function(data){
-  songs=data.songs;
-})
-.catch(function(err){
-  console.log(err)
-})
-
-
-
-const body=$("body"),
-  sidebar=$(".sidebar"),
-  toggle=$(".toggle"),
-  searchBtn=$(".search-box"),
-  modeSwitch=$(".toggle-switch"),
-  moonSun=$(".moon-sun"),
-  playPause=$(".pause-play"),
-  modeText=$(".mode-text"),
-  playBtn=$(".play"),
-  btnRandom=$(".shuffle"),
-  btnPrev=$(".prev"),
-  btnNext=$(".next"),
-  btnRepeat=$(".replay"),
-  chooseSong=$(".list-item"),
-  progress=$(".progress"),
-  playlist=$(".list-song"),
-  cdThumb=$(".song .image-onplay"),
-  audio=$("#audio"),
-  player=$(".pause-play"),
-  cd=$(".navbar .playing"),
-  
-  
-  PLAYER_STORAGE_KEY='song';
-  const artist=$$(".artist-onplay"),
-  heading=$$(".title-onplay"),
-  imageThumb= $$(".image-onplay");
-
- 
-  toggle.addEventListener("click",()=>{
-    sidebar.classList.toggle("close");
-  })
-    
-  //Dark mode
-  modeSwitch.addEventListener("click",()=>{
-      body.classList.toggle("dark");
-      if(body.classList.contains("dark")){
-        modeText.innerHTML="Light mode";
-        moonSun.innerHTML=`<i class='bx bx-moon icon moon' ></i>` 
-      }
-      else{
-        modeText.innerHTML="Dark mode";
-        moonSun.innerHTML=`<i class='bx bx-sun icon sun' ></i>`
-      }
-  });
- 
-
   const app={
     isPlaying: false,
     isRandom:false,     
@@ -70,60 +16,7 @@ const body=$("body"),
     currentIndex: 0,
     
     config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY))||{},
-    songs: [
-      {
-        name:"Still Life",
-        singer:"Big Bang",
-        path:"./assets/StillLife-BIGBANG-7182115.mp3",
-        image:"./assets/bigbang.jpg",
-        time:"3:15"
-       },
-     {
-       name:"Sai Gon Hom Nay Mua",
-       singer:"Bao Uyen",
-       path:"./assets/SaiGonHomNayMua-JSOLHoangDuyen-7026537.mp3",
-       image:"./assets/Sai gon hôm nay mua.jpg",
-       time:"4:04"
-     },
-     {
-      name:"Quan Tai Hu",
-      singer:"Young Milo",
-      path:"./assets/QuanTaiHu-YoungMilo-6996488.mp3",
-      image:"./assets/Quan tài hư.jpg",
-      time:"3:49"
-     },
-     {
-      name:"Quan Tai Hu",
-      singer:"Young Milo",
-      path:"./assets/QuanTaiHu-YoungMilo-6996488.mp3",
-      image:"./assets/Quan tài hư.jpg",
-      time:"3:49"
-     },
-     {
-      name:"Sai Gon Hom Nay Mua",
-      singer:"Bao Uyen",
-      path:"./assets/SaiGonHomNayMua-JSOLHoangDuyen-7026537.mp3",
-      image:"./assets/Sai gon hôm nay mua.jpg",
-      time:"4:04"
-    },
-    {
-      name:"Sai Gon Hom Nay Mua",
-      singer:"Bao Uyen",
-      path:"./assets/SaiGonHomNayMua-JSOLHoangDuyen-7026537.mp3",
-      image:"./assets/Sai gon hôm nay mua.jpg",
-      time:"4:04"
-    },
-    {
-      name:"Sai Gon Hom Nay Mua",
-      singer:"Bao Uyen",
-      path:"./assets/SaiGonHomNayMua-JSOLHoangDuyen-7026537.mp3",
-      image:"./assets/Sai gon hôm nay mua.jpg",
-      time:"4:04"
-    },
-
-     
-      
-  ],
+    songs:  data.songs ,
   setConfig: function(key,value) {
     this.config[key]=value;
     localStorage.setItem(PLAYER_STORAGE_KEY,JSON.stringify(this.config));
@@ -349,3 +242,57 @@ const body=$("body"),
   }
 
 app.start()
+})
+.catch(function(err){
+  console.log(err)
+})
+
+
+
+const body=$("body"),
+  sidebar=$(".sidebar"),
+  toggle=$(".toggle"),
+  searchBtn=$(".search-box"),
+  modeSwitch=$(".toggle-switch"),
+  moonSun=$(".moon-sun"),
+  playPause=$(".pause-play"),
+  modeText=$(".mode-text"),
+  playBtn=$(".play"),
+  btnRandom=$(".shuffle"),
+  btnPrev=$(".prev"),
+  btnNext=$(".next"),
+  btnRepeat=$(".replay"),
+  chooseSong=$(".list-item"),
+  progress=$(".progress"),
+  playlist=$(".list-song"),
+  cdThumb=$(".song .image-onplay"),
+  audio=$("#audio"),
+  player=$(".pause-play"),
+  cd=$(".navbar .playing"),
+  
+  
+  PLAYER_STORAGE_KEY='song';
+  const artist=$$(".artist-onplay"),
+  heading=$$(".title-onplay"),
+  imageThumb= $$(".image-onplay");
+
+ 
+  toggle.addEventListener("click",()=>{
+    sidebar.classList.toggle("close");
+  })
+    
+  //Dark mode
+  modeSwitch.addEventListener("click",()=>{
+      body.classList.toggle("dark");
+      if(body.classList.contains("dark")){
+        modeText.innerHTML="Light mode";
+        moonSun.innerHTML=`<i class='bx bx-moon icon moon' ></i>` 
+      }
+      else{
+        modeText.innerHTML="Dark mode";
+        moonSun.innerHTML=`<i class='bx bx-sun icon sun' ></i>`
+      }
+  });
+ 
+
+  

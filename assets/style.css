@@ -249,9 +249,6 @@ body.dark .switch::before{
     transform: translateY(-50%);
 }
 
-.home .slider{
-
-}
 .home .slider .image{
 height:300px;
 position: absolute;
@@ -372,9 +369,7 @@ right: 400px;
 }
 
 /*list-song*/
-.list-song{
- 
-}
+
 
 .list-song .list-item{
     display:flex;

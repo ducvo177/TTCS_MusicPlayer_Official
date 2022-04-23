@@ -1,6 +1,6 @@
 const $=document.querySelector.bind(document);
 const $$=document.querySelectorAll.bind(document);
-const  url="https://testapi.io/api/DucVo177/Api music";
+const  url="https://testapi.io/api/DucVo233/Api music";
 var songs=[]
 var onClick=0;
 

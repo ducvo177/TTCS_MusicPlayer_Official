@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-<<<<<<< HEAD
+
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-=======
-    
->>>>>>> 4e1b05fb78af1a84aff4e7e2e4621bc598caac2a
+    <link rel="stylesheet" href="./assets/css/toast.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel="stylesheet">  
 </head> 
 <body class="dark">
@@ -22,11 +20,9 @@
              <header>
                  <div class="image-text">
                      <span class="image">
-<<<<<<< HEAD
+
                          <img src="./assets/image/tải xuống.png" alt="logo">
-=======
-                       
->>>>>>> 4e1b05fb78af1a84aff4e7e2e4621bc598caac2a
+
                      </span>
                  
                 <div class="text header-text">
@@ -46,43 +42,39 @@
                                 <input class="input" type="text" placeholder="Search..." >
                             </div>
                         </li>
-
-                        <li class="nav-link"> 
-                            <a class="active"href="">
-                                <i class='bx bx-home-alt icon'></i>
-                                <span class="text nav-text">Home</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link"> 
-                            <a href="">
-                                <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                                <span class="text nav-text">Chart</span>
-                            </a>
-                        </li>
-                        <li class="nav-link"> 
-                            <a href="">
-                                <i class='bx bx-podcast icon' ></i>        
-                                <span class="text nav-text">Podcast</span>                    
-                            </a>
-                        </li>
-                        <li class="nav-link"> 
-                            <a href="">
+                        <li class="nav-link "> 
+                            <div index="0" class="button active ">
                                 <i class='bx bxs-playlist icon' ></i>
                                 <span class="text nav-text">My Playlist</span>
-                            </a>
+                            </div>
                         </li>
+                        <li class="nav-link "> 
+                            <div index="1" class="button ">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Home</span>
+                            </div>
+                        </li>
+
                         <li class="nav-link"> 
-                            <a href="">
-                                <i class='bx bx-star icon' ></i>
-                                <span class="text nav-text">Top 10</span>
-                            </a>
+                            <div index="2" class="button">
+                                <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                                <span class="text nav-text">Chart</span>
+                            </div>
                         </li>
+                     
+                        <li class="nav-link"> 
+                          <div index="3" class="button">
+                            <i class='bx bxl-youtube icon'></i>       
+                              <span class="text nav-text">M/V</span>                    
+                          </div>
+                      </li>
+                        
+                       
                     </ul>
                 </div>
               <div class="bottom-content">
                 <li class="nav-link"> 
-                    <a href="">
+                    <a href="/login.html">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Log out</span>
                     </a>
@@ -113,6 +105,32 @@
                   <h1 class="title-onplay text"></h1>
                    <span class="artist-onplay text" ></span>
               </div>
+            <div class="home layer">
+            
+              <div id="toast">
+        
+                
+                
+                <div class="toast toast--error">
+                    <div class="toast__icon">
+                     <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="toast__body">
+                        <h3 class="toast__title">Error</h3>
+                        <p class="toast__msg">May vi tinh ket noi internet(Windows)</p>
+                    </div>
+                    <div class="toast__close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div>
+                <div onclick="showSuccessToast();" class="btn btn--success">Show success toast</div>
+                <div onclick="showErrorToast();" class="btn btn--danger">Show danger toast</div>
+            </div>
+            </div>
 
               
               <!--List nhạc-->
@@ -128,20 +146,18 @@
         </div>
  
         <div class="row no-gutters">
-          <div class="navbar">
+          <div class="navbar ">
             <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="10000">
             
             <audio id="audio" src=""></audio> 
             <div class="playing">
                  <div class="song">
-<<<<<<< HEAD
-                    <img class="image-onplay" src="./assets/image/Binz_-_Bigcityboi.jpg" alt="Music">
-=======
-                   
->>>>>>> 4e1b05fb78af1a84aff4e7e2e4621bc598caac2a
+
+                    <img class="image-onplay" src="" alt="Music">
+
                     <div class="descib">
-                        <h1 class="title-onplay text">Big City Boi</h1>
-                        <span class="artist-onplay text">Binz ft Touliver</span>
+                        <h1 class="title-onplay text"></h1>
+                        <span class="artist-onplay text"></span>
                     </div>
                  </div>
                
@@ -162,10 +178,8 @@
           </div>
         </div>
     </div>
-<<<<<<< HEAD
+    <script src="./assets/js/toast.js"></script>
     <script src="./assets/js/java.js"></script>
-=======
-  
->>>>>>> 4e1b05fb78af1a84aff4e7e2e4621bc598caac2a
+
 </body>
 </html>

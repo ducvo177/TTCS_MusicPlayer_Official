@@ -2,13 +2,18 @@ const $=document.querySelector.bind(document);
 const $$=document.querySelectorAll.bind(document);
 const  url="https://testapi.io/api/DucVo177/Api music";
 var songs=[]
-
+var onClick=0;
 
 
 
 
 
 const body=$("body"),
+  menu=$(".menu-links"),
+  navLink=$$(".nav-link"),
+  navbar=$(".navbar"),
+  button=$$(".nav-link .button"),
+  frame=$$("iframe"),
   sidebar=$(".sidebar"),
   toggle=$(".toggle"),
   searchBtn=$(".search-box"),
@@ -26,16 +31,23 @@ const body=$("body"),
   playlist=$(".list-song"),
   cdThumb=$(".song .image-onplay"),
   audio=$("#audio"),
+  heart=$(".hover-layer .heart"),
   player=$(".pause-play"),
   cd=$(".navbar .playing"),
-  
+  home=$(".home.layer"),
+  suggest=$(".suggest")
+  listMV=$(".list-mv"),
+  mv=$(".mv"),
+  wrap=$(".wrapper"),
   
   PLAYER_STORAGE_KEY='song';
   const artist=$$(".artist-onplay"),
   heading=$$(".title-onplay"),
   imageThumb= $$(".image-onplay");
 
-  fetch(url)
+  //My-playlist active
+  
+    fetch(url)
   .then(function(response){
     return response.json();
   })
@@ -71,6 +83,18 @@ const body=$("body"),
      <span class="time text" >${song.time}</span>
    </li>
   
+       `
+       
+        })
+        playlist.innerHTML =htmls.join('');
+        },
+        //Hàm render2
+      render2: function(){
+        
+        const htmls= this.songs.map((song, index) =>{
+          this.currentIndex=index
+          return `
+      
        `
        
         })
@@ -269,17 +293,147 @@ const body=$("body"),
               //Render playlist
               this.render()
               
-           }
+           },
+          
     }
+    if(button[0].classList.contains("active")){
+      app.start()
+    }
+    mvToggle=function(){
+      
+    }
+    //Xử lý khi click sidebar
+    menu.onclick = function(e){
+      if(e.target.getAttribute("index")!=undefined ){
+        e.target.classList.toggle('active')
+        button[onClick].classList.toggle('active')
+        onClick=e.target.getAttribute("index")
+        
+      }
+      if(e.target.getAttribute("index")=='0'){
+        home.setAttribute("style","display:none;")
+        navbar.setAttribute("style","display:block;")
+        sidebar.setAttribute("style","height:85%;")
+       }
+      if(e.target.getAttribute("index")=='1'){
+        navbar.setAttribute("style","display:block;")
+        home.setAttribute("style","display:block;")
+        sidebar.setAttribute("style","height:85%;")
+        home.innerHTML=""
+        home.innerHTML+=` <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="/assets/slider/slider1.jpg" >
+        </div>
+        <div class="mySlides fade">
+          <img src="/assets/slider/slider2.jpg" >
+        </div>
+        <div class="mySlides fade">
+          <img src="/assets/slider/slider3.jpg" >
+        </div>
+        <div class="mySlides fade">
+            <img src="/assets/slider/slider4.jpg" >
+          </div>
+        </div>
+        <h1 class="describ text">Có Thể Bạn Muốn Nghe</h1>
+   
+       
+    `
+    //Slider
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
   
-  app.start()
+  slides[slideIndex-1].style.display = "block"; 
+  
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+        var renderHome= function(){
+          
+          const htmls= data.playlist.map((play) =>{
+           
+            return `    
+            <div class="suggest"> 
+                            
+            <div class="playlist">
+              <div class="hover-layer">
+              <i class='bx bxs-heart icon heart'></i>
+                <i class='bx bx-play-circle plays' ></i>
+                <i class='bx bx-dots-horizontal-rounded icon' ></i>
+              </div>
+              <div class="wrapper">
+                <img src="${play.image}" alt="" class="image">
+              </div>
+           
+              <h1 class="name text">${play.name}</h1>
+              <p class="sub text">${play.describ}</p>
+            </div>
+            `   
+          })
+          home.innerHTML +=htmls;
+          }
+          renderHome()
+         
+       }
+       if(e.target.getAttribute("index")=='2'){
+        home.setAttribute("style","display:block;")
+        navbar.setAttribute("style","display:block;")
+        sidebar.setAttribute("style","height:85vh;")
+
+       
+       }
+       if(e.target.getAttribute("index")=='3'){
+        home.setAttribute("style","display:block;")
+        navbar.setAttribute("style","display:none;")
+        sidebar.setAttribute("style","height:100vh;")
+
+        home.innerHTML=` <div class="tab">
+        <h1 class="describ text">M/V</h1>
+        <ul class="category">
+          <li class="category-item text active">VIET NAM</li>
+          <li class="category-item text">US-UK</li>
+          <li class="category-item text">KPOP</li>
+          
+        </ul>
+        
+      </div>
+      <iframe class="mv first" width="1500" height="750" src="https://www.youtube.com/embed/P8qEusQiwsw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="list-mv">
+       <iframe class="mv" width="400" height="250" src="https://www.youtube.com/embed/DJN4SovWq7Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <iframe class="mv" width="400" height="250" src="https://www.youtube.com/embed/Yw9Ra2UiVLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <iframe class="mv" width="400" height="250" src="https://www.youtube.com/embed/exZfx7P8s5o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <iframe class="mv" width="400" height="250" src="https://www.youtube.com/embed/rym-6cROUwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     </div>`
+       }
+       
+
+      
+      
+     
+
+    }
+    
+    
   })
   .catch(function(err){
     console.log(err)
   })
+  
+  //Home page
+
   toggle.addEventListener("click",()=>{
     sidebar.classList.toggle("close");
   })
+  
     
   //Dark mode
   modeSwitch.addEventListener("click",()=>{
@@ -295,4 +449,160 @@ const body=$("body"),
   });
  
 
+
+
+//Định nghĩa Rules
+
+Validator.isRequired = function(selector){
+  return {
+      selector:selector,
+      test: function(value){
+        return value.trim()? undefined :'Vui lòng nhập trường này'
+   
+      }
+  };
+}
+Validator.isEmail = function(selector){
+ return {
+      selector:selector,
+      test: function(value){
+          var regex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          return regex.test(value) ?  undefined : "Vui lòng nhập email"
+      }
+  };
+}
+Validator.minLength= function(selector){
+  return{
+      selector:selector,
+      test: function(value){
+           var length=6;
+           if(value.length<length){
+               return "Vui lòng nhập mật khẩu dài hơn 6 ký tự";
+           }
+      }
+  }
+}
+Validator.isComfirmed = function(selector,getConfirmValue,message){
+  return{
+      selector:selector,
+      test: function(value){
+    return value===getConfirmValue() ? message : "Giá trị nhập vào không chính xác";
+      }
+  }
+}
+//Login
+Validator({
+  form:'#form-1',
+  errorSelector:'.form-message',
+  rules:[
+      Validator.isRequired('#fullname'),
+      Validator.isEmail('#email'),
+      Validator.isRequired('#email'),
+      Validator.minLength('#password'),
+      Validator.isComfirmed('#password_confirmation',function(){
+        return document.querySelector('#form-1 #password').value;
+      },'Mật khẩu nhập lại không chính xác')
+  ],
+  onSubmit:function(data){
+  console.log(data);
+  }
+});
+//Đối tượng Validator
+function Validator(options) {
+  var selectorRules={
   
+  };
+
+//Hàm thực hiện validate
+  function validate(inputElement,rule){
+  var errorMessage;
+  var errorElement=inputElement.parentNode.querySelector(options.errorSelector);    
+  //Lấy ra các rule của selector   
+  var rules=selectorRules[rule.selector];       
+  //Lặp ra từng rule và kiểm tra
+  //Nếu có lỗi thì dừng kiểm tra
+  for(var i=0;i < rules.length;++i){
+     errorMessage= rules[i](inputElement.value);
+     if(errorMessage) break;
+  }
+  if(errorMessage){
+      errorElement.innerText=errorMessage;
+      inputElement.parentElement.classList.add('invalid')
+     
+  }else{
+      errorElement.innerText='';
+      inputElement.parentElement.classList.remove('invalid')
+
+  }
+  return!! errorMessage;
+ }
+
+
+//Lấy elements của form cần validate
+  var formElement=document.querySelector(options.form)
+  if(formElement){    
+      submit.onclick=function(){
+        if(fullname.value=="dcm"&& password.value=="dcm"){
+          window.location.href="index.html" 
+         }
+      }
+      //Khi submit form
+      formElement.onsubmit=function(e){
+        e.preventDefault();
+        
+          var isFormValid= true;
+          //Lặp qua từng rule và validate 
+          options.rules.forEach(function(rule){
+              var inputElement= formElement.querySelector(rule.selector);
+              var isValid=validate(inputElement,rule)
+              if(!isValid){
+                  isFormValid=false;
+              }
+          });
+         
+         
+          if(isFormValid){
+              //Trường hợp submit với javascript
+              if(typeof options.onSubmit==='function'){
+                  var enableInputs=formElement.querySelectorAll('[name]');
+                  var formValues=Array.from(enableInputs).reduce(function(values,input){
+                  values[input.name]=input.value ;
+                  
+                   return values;
+                
+                },{});
+                  options.onSubmit(formValues);
+                  
+              }
+          }else{
+             formElement.submit();
+          }
+          
+      }
+      //Lặp qua mỗi rule và xử lý
+      options.rules.forEach(function(rule){
+          var inputElement= formElement.querySelector(rule.selector);
+          //Lưu lại rule cho mỗi input
+          if(Array.isArray(selectorRules[rule.selector])){
+              selectorRules[rule.selector].push( rule.test)
+          }else{
+          selectorRules[rule.selector]=[rule.test]
+          }
+          if(inputElement){
+              //Xử lý trường hợp blur
+              inputElement.onblur= function(){
+                  validate(inputElement,rule)
+              }
+              //Xử lý mỗi khi người dùng nhập vào input
+              inputElement.oninput= function(){
+                  var errorElement=inputElement.parentNode.querySelector(options.errorSelector);    
+                  errorElement.innerText='';
+                  inputElement.parentElement.classList.remove('invalid')
+              }
+          }
+      })
+  }
+
+  
+
+}

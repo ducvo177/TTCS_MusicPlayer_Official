@@ -322,16 +322,16 @@ const body=$("body"),
         home.innerHTML=""
         home.innerHTML+=` <div class="slideshow-container">
         <div class="mySlides fade">
-          <img src="/assets/slider/slider1.jpg" >
+          <img src="./assets/slider/slider1.jpg" >
         </div>
         <div class="mySlides fade">
-          <img src="/assets/slider/slider2.jpg" >
+          <img src="./assets/slider/slider2.jpg" >
         </div>
         <div class="mySlides fade">
-          <img src="/assets/slider/slider3.jpg" >
+          <img src="./assets/slider/slider3.jpg" >
         </div>
         <div class="mySlides fade">
-            <img src="/assets/slider/slider4.jpg" >
+            <img src="./assets/slider/slider4.jpg" >
           </div>
         </div>
         <h1 class="describ text">Có Thể Bạn Muốn Nghe</h1>
